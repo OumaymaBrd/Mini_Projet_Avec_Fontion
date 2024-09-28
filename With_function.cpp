@@ -3,6 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 
+printf("hhhhhh");
 void afficher() {
     printf("\033[1;31m\n\n\t\tMini-Projet : Systeme de Gestion de Stock dans une Librairie\n");
     printf("\n\t\t\033[0mLe programme offre les fonctionnalites suivantes :\n\n");
@@ -14,7 +15,6 @@ void afficher() {
     printf("\t\033[1;32m6: Afficher le nombre total de livres en stock\n");
     printf("\t\033[1;32m0: Quitter le programme\n\n\033[0m");
 }
-//jutilise 
 void choisir_nb_choix(int *choix) {
     int valide;
     do {
@@ -27,7 +27,8 @@ void choisir_nb_choix(int *choix) {
         }
     } while (valide != 1 || *choix < 0 || *choix > 6);
 }
-void switch_cas(int choix) {
+
+void switch_cas(int choix) { //fonction pour le traitement de cas de choix 
     char titre[100][100];
     char auteur[100][100];
     float prix[100];
@@ -39,7 +40,7 @@ void switch_cas(int choix) {
         switch (choix) {
             case 1: {
                 if (nmb >= 100) {
-                    printf("!!!!Erreur : La capacité maximale de livres est atteinte.\n");
+                    printf("!!!!Erreur : La capacite maximale de livres est atteinte.\n");
                     break;
                 }
 
@@ -53,7 +54,7 @@ void switch_cas(int choix) {
 
                 // traiter le choix entre 0 et 1
                 while (1) {
-                    printf("\tDonnez-moi un numéro de votre choix (0 ou 1) : ");
+                    printf("\tDonnez-moi un numero de votre choix (0 ou 1) : ");
                     if (scanf("%d", &nb_saisir) != 1 || (nb_saisir != 0 && nb_saisir != 1)) {
                         printf("\033[1;31m\n\n\t\tErreur : Veuillez entrer 0 ou 1.\033[0m\n\n");
                         while (getchar() != '\n'); // Vider le buffer
@@ -74,7 +75,7 @@ void switch_cas(int choix) {
                         while (getchar() != '\n');
 
                         if (valide != 1 || nb_saisir < 2) {
-                            printf("\033[1;31m\n\n\t\tErreur : veuillez entrer un entier supérieur ou égal à 2.\033[0m\n\n");
+                            printf("\033[1;31m\n\n\t\tErreur : veuillez entrer un entier superieur ou egal à 2.\033[0m\n\n");
                         }
                     } while (valide != 1 || nb_saisir < 2);
                 } else {
@@ -94,7 +95,7 @@ void switch_cas(int choix) {
 
                         for (int j = 0; j < nmb; j++) {
                             if (strcmp(titre[nmb], titre[j]) == 0) {
-                                printf("\t\t\033[1;31mLe livre '%s' existe déjà dans le stock.\033[0m\n", titre[nmb]);
+                                printf("\t\t\033[1;31mLe livre '%s' existe deja dans le stock.\033[0m\n", titre[nmb]);
                                 existe = 1;
                                 break;
                             }
@@ -108,7 +109,7 @@ void switch_cas(int choix) {
                     // Vérifier : Est ce que  le titre contient uniquement des alphabets ou espaces
                     for (int j = 0; titre[nmb][j] != '\0'; j++) {
                         if (!isalpha(titre[nmb][j]) && titre[nmb][j] != ' ') {
-                            printf("\n\t\033[1;31m!!!!! Erreur : Le titre contient des caractères non valides.\033[0m\n");
+                            printf("\n\t\033[1;31m!!!!! Erreur : Le titre contient des caracteres non valides.\033[0m\n");
                             printf("\n\n\033[1;35m\t\tResaisir le titre !!!!\033[0m\n");
                             goto e;  // Retour  la saisie du titre
                         }
@@ -122,7 +123,7 @@ void switch_cas(int choix) {
                     // Traiter l'auteur entrer 
                     for (int j = 0; auteur[nmb][j] != '\0'; j++) {
                         if (!isalpha(auteur[nmb][j]) && auteur[nmb][j] != ' ') {
-                            printf("\n\t\033[1;31m!!!!! Erreur : l'auteur contient des caractères non valides.\033[0m\n");
+                            printf("\n\t\033[1;31m!!!!! Erreur : l'auteur contient des caracteres non valides.\033[0m\n");
                             printf("\n\n\033[1;35m\t\tResaisir le nom de l'auteur !!!!\033[0m\n");
                             goto a;  
                         }
@@ -177,7 +178,7 @@ void switch_cas(int choix) {
             // Recherche 
             case 3: {
                 char recherche[100];
-                printf("Saisir le titre du livre à rechercher : ");
+                printf("Saisir le titre du livre a rechercher : ");
                 scanf(" %[^\n]", recherche);
                 int trouve = 0;
 
@@ -253,16 +254,16 @@ void switch_cas(int choix) {
             }
 
             case 0:
-                printf("\033[1;32m\n\t\tMerci d'avoir utilisé notre programme !\033[0m\n");
+                printf("\033[1;32m\n\t\tMerci d'avoir utilise notre programme !\033[0m\n");
                 exit(0);
 
             default:
-                printf("\033[1;31m\n\t\tChoix non valide ! Veuillez réessayer.\033[0m\n");
+                printf("\033[1;31m\n\t\tChoix non valide ! Veuillez reessayer.\033[0m\n");
                 break;
         }
 
         printf("\n\n");
-        afficher();  // Afficher  après !!!! opération
+        afficher();  // Repeter l' Afficher  
         choisir_nb_choix(&choix);
     } while (choix != 0);
 }
