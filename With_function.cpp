@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 
-printf("hhhhhh");
+
 void afficher() {
     printf("\033[1;31m\n\n\t\tMini-Projet : Systeme de Gestion de Stock dans une Librairie\n");
     printf("\n\t\t\033[0mLe programme offre les fonctionnalites suivantes :\n\n");
